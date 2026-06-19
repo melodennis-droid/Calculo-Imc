@@ -1,0 +1,55 @@
+<!DOCTYPE html>  <!-- declara que este documento é HTML5 -->
+<html lang="pt-BR">  <!-- abre a página, define o idioma como português do Brasil -->
+<head>  <!-- abre o cabeçalho, conteúdo não visível na tela -->
+  <meta charset="UTF-8">  <!-- define a codificação de caracteres, permite acentos -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- adapta a página para celulares -->
+  <title>Calculadora de IMC</title>  <!-- texto exibido na aba do navegador -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">  <!-- acelera o carregamento das fontes do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">  <!-- importa as 3 fontes usadas -->
+
+  <link rel="stylesheet" href="style.css">  <!-- importa o CSS, que está na mesma pasta -->
+</head>  <!-- fecha o cabeçalho -->
+<body>  <!-- abre o corpo da página, conteúdo visível -->
+
+  <main class="card">  <!-- elemento principal, visual de cartão -->
+    <p class="eyebrow">Índice de Massa Corporal</p>  <!-- texto pequeno de destaque -->
+    <h1>Calcule seu IMC</h1>  <!-- título principal da página -->
+    <p class="subtitle">Informe seu peso e altura para ver onde você está na escala.</p>  <!-- texto explicativo -->
+
+    <form id="form-imc">  <!-- formulário; o id é usado pelo JS para escutar o envio -->
+      <div class="campo">  <!-- agrupa o rótulo e o campo do peso -->
+        <label for="peso">Peso (kg)</label>  <!-- rótulo, ligado ao input pelo atributo "for" -->
+        <input type="number" id="peso" name="peso" placeholder="70" min="1" step="0.1" required>  <!-- campo numérico do peso -->
+      </div>  <!-- fecha o agrupamento do peso -->
+      <div class="campo">  <!-- agrupa o rótulo e o campo da altura -->
+        <label for="altura">Altura (cm)</label>  <!-- rótulo do campo altura -->
+        <input type="number" id="altura" name="altura" placeholder="170" min="1" step="0.1" required>  <!-- campo numérico da altura -->
+      </div>  <!-- fecha o agrupamento da altura -->
+      <button type="submit">Calcular</button>  <!-- botão que envia o formulário -->
+    </form>  <!-- fecha o formulário -->
+
+    <p id="erro" class="erro" hidden></p>  <!-- mensagem de erro, escondida até o JS exibir -->
+
+    <section id="resultado" class="resultado" hidden>  <!-- seção do resultado, escondida até existir um cálculo -->
+      <div class="leitura">  <!-- agrupa o número do imc e a categoria -->
+        <span id="valor-imc" class="valor-imc">0.0</span>  <!-- número do imc, preenchido via JS -->
+        <span id="categoria" class="categoria">—</span>  <!-- categoria, preenchida via JS -->
+      </div>  <!-- fecha o agrupamento da leitura -->
+
+      <div class="gauge">  <!-- contêiner da barra visual -->
+        <div class="gauge-trilha"></div>  <!-- trilha colorida de fundo -->
+        <div id="gauge-ponteiro" class="gauge-ponteiro"></div>  <!-- ponteiro que se move conforme o imc -->
+      </div>  <!-- fecha o contêiner do gauge -->
+      <div class="gauge-legendas">  <!-- legendas abaixo da barra -->
+        <span>Abaixo</span>  <!-- legenda da primeira faixa -->
+        <span>Normal</span>  <!-- legenda da segunda faixa -->
+        <span>Sobrepeso</span>  <!-- legenda da terceira faixa -->
+        <span>Obesidade</span>  <!-- legenda da quarta faixa -->
+      </div>  <!-- fecha o agrupamento das legendas -->
+    </section>  <!-- fecha a seção de resultado -->
+  </main>  <!-- fecha o elemento principal -->
+
+  <script src="script.js"></script>  <!-- importa o JS, que está na mesma pasta -->
+</body>  <!-- fecha o corpo -->
+</html>  <!-- fecha o documento -->

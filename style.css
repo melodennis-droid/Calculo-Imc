@@ -1,0 +1,226 @@
+:root {  /* define variáveis (cores e fontes) usadas em todo o arquivo */
+  --bg: #EFF5F2;              /* cor de fundo da página */
+  --surface: #FFFFFF;         /* cor de fundo do cartão */
+  --text: #16241F;            /* cor do texto principal */
+  --text-muted: #65766F;      /* cor do texto secundário, mais apagado */
+  --border: #DCE8E2;          /* cor das bordas e linhas */
+  --primary: #1B6E5C;         /* cor de destaque (botão, títulos) */
+
+  --cor-abaixo: #4FB8A0;      /* cor da faixa "abaixo do peso" */
+  --cor-normal: #2F8F5A;      /* cor da faixa "peso normal" */
+  --cor-sobrepeso: #E2A53D;   /* cor da faixa "sobrepeso" */
+  --cor-obesidade: #C9495A;   /* cor da faixa "obesidade" */
+
+  --font-display: 'Space Grotesk', sans-serif;  /* fonte dos títulos */
+  --font-body: 'Inter', sans-serif;             /* fonte do texto comum */
+  --font-mono: 'JetBrains Mono', monospace;     /* fonte de números/dados */
+}
+
+* {  /* aplica a todos os elementos da página */
+  margin: 0;               /* remove margem padrão do navegador */
+  padding: 0;               /* remove espaçamento interno padrão */
+  box-sizing: border-box;   /* padding e borda entram no tamanho total do elemento */
+}
+
+body {  /* estiliza o corpo da página */
+  min-height: 100vh;             /* ocupa a altura inteira da tela */
+  display: flex;                  /* ativa o layout flexbox */
+  align-items: center;            /* centraliza o conteúdo verticalmente */
+  justify-content: center;        /* centraliza o conteúdo horizontalmente */
+  background: var(--bg);          /* aplica a cor de fundo */
+  font-family: var(--font-body);  /* define a fonte padrão */
+  color: var(--text);             /* define a cor padrão do texto */
+  padding: 24px;                  /* espaçamento para não colar nas bordas da tela */
+}
+
+.card {  /* estiliza o cartão branco central */
+  width: 100%;                     /* ocupa toda a largura disponível */
+  max-width: 440px;                /* nunca passa de 440px de largura */
+  background: var(--surface);      /* fundo branco */
+  border: 1px solid var(--border); /* borda fina e clara */
+  border-radius: 20px;             /* cantos arredondados */
+  padding: 40px 36px;               /* espaçamento interno */
+  box-shadow: 0 24px 48px -24px rgba(27, 110, 92, 0.18);  /* sombra suave por baixo */
+}
+
+.eyebrow {  /* estiliza o texto pequeno acima do título */
+  font-family: var(--font-mono);   /* fonte monoespaçada */
+  font-size: 12px;                  /* tamanho pequeno */
+  font-weight: 600;                 /* semi-negrito */
+  letter-spacing: 0.08em;           /* espaço extra entre letras */
+  text-transform: uppercase;        /* texto sempre em maiúsculas */
+  color: var(--primary);            /* cor de destaque */
+  margin-bottom: 8px;                /* espaço abaixo do texto */
+}
+
+h1 {  /* estiliza o título principal */
+  font-family: var(--font-display);  /* fonte de destaque */
+  font-size: 28px;                     /* tamanho grande */
+  font-weight: 700;                    /* negrito */
+  line-height: 1.2;                    /* espaçamento entre linhas */
+  margin-bottom: 8px;                   /* espaço abaixo do título */
+}
+
+.subtitle {  /* estiliza o texto explicativo */
+  font-size: 14px;             /* tamanho do texto */
+  color: var(--text-muted);    /* cor apagada */
+  margin-bottom: 28px;         /* espaço antes do formulário */
+  line-height: 1.5;            /* espaçamento entre linhas */
+}
+
+form {  /* estiliza o formulário inteiro */
+  display: flex;             /* ativa o layout flexbox */
+  flex-direction: column;    /* organiza os campos em coluna, um abaixo do outro */
+  gap: 16px;                  /* espaço entre os campos */
+}
+
+.campo {  /* estiliza cada agrupamento de rótulo + input */
+  display: flex;             /* ativa o layout flexbox */
+  flex-direction: column;    /* coloca o rótulo acima do input */
+  gap: 6px;                   /* espaço entre rótulo e input */
+}
+
+label {  /* estiliza os rótulos dos campos */
+  font-size: 13px;             /* tamanho pequeno */
+  font-weight: 600;             /* semi-negrito */
+  color: var(--text-muted);    /* cor apagada */
+}
+
+input {  /* estiliza os campos de entrada de texto/número */
+  font-family: var(--font-mono);    /* fonte monoespaçada */
+  font-size: 16px;                   /* tamanho legível */
+  padding: 12px 14px;                /* espaçamento interno */
+  border: 1.5px solid var(--border); /* borda fina */
+  border-radius: 10px;               /* cantos arredondados */
+  background: var(--bg);             /* fundo levemente diferente do cartão */
+  color: var(--text);                /* cor do texto digitado */
+  outline: none;                     /* remove o contorno azul padrão do navegador */
+  transition: border-color 0.15s ease, background 0.15s ease;  /* anima a troca de cor */
+}
+
+input:focus {  /* estilo aplicado quando o campo está selecionado */
+  border-color: var(--primary);   /* borda fica na cor de destaque */
+  background: var(--surface);     /* fundo fica branco */
+}
+
+input::placeholder {  /* estiliza o texto de exemplo dentro do campo vazio */
+  color: #A3B3AC;   /* cor acinzentada */
+}
+
+button {  /* estiliza o botão "Calcular" */
+  margin-top: 6px;              /* espaço acima do botão */
+  padding: 13px;                 /* espaçamento interno */
+  border: none;                  /* remove a borda padrão */
+  border-radius: 10px;           /* cantos arredondados */
+  background: var(--primary);    /* fundo na cor de destaque */
+  color: #fff;                    /* texto branco */
+  font-family: var(--font-body);  /* fonte padrão */
+  font-size: 15px;                 /* tamanho do texto */
+  font-weight: 600;                /* semi-negrito */
+  cursor: pointer;                 /* mostra a "mãozinha" ao passar o mouse */
+  transition: transform 0.1s ease, background 0.15s ease;  /* anima clique e hover */
+}
+
+button:hover {  /* estilo quando o mouse passa por cima do botão */
+  background: #15584A;   /* fica mais escuro */
+}
+
+button:active {  /* estilo no momento exato do clique */
+  transform: scale(0.98);  /* encolhe levemente, dá sensação de clique */
+}
+
+button:focus-visible,  /* acessibilidade: contorno ao navegar pelo botão via teclado */
+input:focus-visible {  /* mesma regra aplicada também aos inputs */
+  outline: 2px solid var(--primary);  /* contorno visível na cor de destaque */
+  outline-offset: 2px;                 /* afasta o contorno do elemento */
+}
+
+.erro {  /* estiliza a mensagem de erro */
+  margin-top: 14px;            /* espaço acima da mensagem */
+  font-size: 13px;              /* tamanho pequeno */
+  color: var(--cor-obesidade);  /* cor de alerta (vermelho/rosa) */
+}
+
+.resultado {  /* estiliza o bloco onde aparece o resultado */
+  margin-top: 32px;             /* espaço acima do bloco */
+  padding-top: 28px;            /* espaço interno no topo */
+  border-top: 1px solid var(--border);  /* linha separando do formulário */
+  animation: surgir 0.35s ease;  /* aplica a animação de entrada */
+}
+
+@keyframes surgir {  /* define os passos da animação chamada "surgir" */
+  from { opacity: 0; transform: translateY(6px); }  /* início: invisível e um pouco abaixo */
+  to { opacity: 1; transform: translateY(0); }       /* fim: totalmente visível na posição normal */
+}
+
+.leitura {  /* agrupamento do número do imc com a categoria */
+  display: flex;            /* ativa o layout flexbox */
+  align-items: baseline;    /* alinha os textos pela linha de base */
+  gap: 12px;                 /* espaço entre o número e a categoria */
+  margin-bottom: 20px;       /* espaço antes da barra (gauge) */
+}
+
+.valor-imc {  /* estiliza o número grande do imc */
+  font-family: var(--font-mono);  /* fonte tipo "display digital" */
+  font-size: 44px;                 /* tamanho bem grande */
+  font-weight: 700;                /* negrito */
+  color: var(--primary);           /* cor de destaque */
+  line-height: 1;                   /* remove espaço extra ao redor do número */
+}
+
+.categoria {  /* estiliza o texto da categoria do resultado */
+  font-size: 15px;             /* tamanho médio */
+  font-weight: 600;             /* semi-negrito */
+  color: var(--text-muted);    /* cor apagada, texto secundário */
+}
+
+.gauge {  /* contêiner da barra visual de progresso */
+  position: relative;   /* permite posicionar a trilha e o ponteiro dentro dele */
+  height: 10px;           /* altura fina da barra */
+  margin-bottom: 8px;     /* espaço antes das legendas */
+}
+
+.gauge-trilha {  /* a trilha colorida de fundo */
+  position: absolute;   /* preenche todo o espaço do .gauge */
+  inset: 0;               /* atalho para top/right/bottom/left = 0 */
+  border-radius: 999px;   /* pontas arredondadas, formato de pílula */
+  background: linear-gradient(   /* cria um gradiente de cores */
+    90deg,                          /* direção: da esquerda para a direita */
+    var(--cor-abaixo) 0%,           /* começa com a cor "abaixo do peso" */
+    var(--cor-abaixo) 18%,          /* mantém essa cor até 18% */
+    var(--cor-normal) 30%,          /* a partir de 30%, cor "normal" */
+    var(--cor-normal) 50%,          /* mantém essa cor até 50% */
+    var(--cor-sobrepeso) 58%,       /* a partir de 58%, cor "sobrepeso" */
+    var(--cor-sobrepeso) 68%,       /* mantém essa cor até 68% */
+    var(--cor-obesidade) 78%,       /* a partir de 78%, cor "obesidade" */
+    var(--cor-obesidade) 100%       /* mantém até o final da barra */
+  );
+}
+
+.gauge-ponteiro {  /* o ponteiro que indica a posição do imc */
+  position: absolute;    /* posicionado livremente dentro do .gauge */
+  top: -4px;               /* sobe um pouco para ficar maior que a trilha */
+  left: 0%;                /* posição inicial, alterada depois pelo JS */
+  width: 4px;               /* largura fina, como uma agulha */
+  height: 18px;             /* altura maior que a trilha de fundo */
+  border-radius: 999px;     /* pontas arredondadas */
+  background: var(--text);  /* cor escura, contrasta com o fundo colorido */
+  box-shadow: 0 0 0 3px var(--surface);  /* cria um anel branco em volta do ponteiro */
+  transition: left 0.5s cubic-bezier(0.22, 1, 0.36, 1);  /* anima o movimento suavemente */
+}
+
+.gauge-legendas {  /* legendas abaixo da barra colorida */
+  display: flex;                  /* ativa o layout flexbox */
+  justify-content: space-between; /* distribui as legendas igualmente espaçadas */
+  font-size: 11px;                 /* texto pequeno */
+  color: var(--text-muted);        /* cor apagada */
+  font-weight: 500;                /* peso levemente mais forte que o normal */
+}
+
+@media (prefers-reduced-motion: reduce) {  /* regra só para quem reduziu animações no sistema */
+  .resultado,
+  .gauge-ponteiro {
+    animation: none;    /* desativa a animação de entrada do resultado */
+    transition: none;   /* desativa a transição do movimento do ponteiro */
+  }
+}
